@@ -1,0 +1,58 @@
+
+
+.selection {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    padding-top: 20px;
+    margin: 0 auto;
+    height: 70px;
+    justify-content: center;
+    font: bold 14px arial, helvetica, sans-serif;
+}
+.selection * {
+    margin: 10px;
+    height: 30px;
+}
+input[type="number"] {
+    border: 2px solid black;
+    width: 40px;
+    font: inherit;
+}
+button {
+    border: 2px solid black;
+    width: 100px;
+    padding: 0px;
+    font: inherit;
+    color: whitesmoke;
+}
+#start {
+    background-color: olivedrab;
+}
+#drawArena {
+    background-color: brown;
+}
+
+.lane{
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    border-right: 1px dashed red;
+    height: 108px;
+    padding: 2px;
+    margin-right: 50px;
+    
+}
+
+.car {
+    border: none;
+    height: 104px;
+    width: 104px;
+    padding: 1px;
+}
+/*
+* {
+    background: #000 !important;
+    color: #0f0 !important;
+    outline: solid #f00 1px !important;
+}
+*/
