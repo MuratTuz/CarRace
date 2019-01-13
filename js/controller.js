@@ -48,7 +48,7 @@
         $('#drawArena').click(() => {
             $('.arena').html('');
             let laneCount = $('#carValue').val();
-            let maxWidth = $('.arena').css('width'); // yapilacak
+            let maxWidth = parseInt($('.arena').css('width'), 10); 
             if (laneCount) {
                 arena = new Arena(maxWidth);
                 for (let index = 0; index < laneCount; index++) {
@@ -74,13 +74,15 @@
     function setStartListener() {
         $('#start').click(() => {
             //let carArray = $('div.car').map( function() {return this} ).get();
-            let timer = setInterval( function() {
+            var timer = setInterval( function() {
                             arena.lanes.forEach(function (element, index) {
                                 element.run();
                                 $(`#${index}`).css('margin-left', arena.lanes[index].getCar().place);
                                 $(`#${index} svg path`).css('fill', arena.lanes[index].currentColor);
-                                if (arena.lanes[index].getCar().place > (arena.width - 50)){
-                                    clearInterval(this);
+                                //console.log(arena.lanes[index].getCar().place);
+                                //console.log((arena.width - 50));
+                                if (arena.lanes[index].getCar().place > (arena.width - 100)){
+                                    clearInterval(timer);
                                 }
                             });
                         }, 100);
