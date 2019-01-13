@@ -7,6 +7,7 @@
 
 (function($){
     let arena = undefined;
+    let timer = undefined;
     let carSvg = [`
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
     width="100px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
@@ -46,6 +47,9 @@
 
     function setDrawListener() {
         $('#drawArena').click(() => {
+            if (timer) {
+                clearInterval(timer);
+            }
             $('.arena').html('');
             let laneCount = $('#carValue').val();
             let maxWidth = parseInt($('.arena').css('width'), 10); 
@@ -74,19 +78,19 @@
     function setStartListener() {
         $('#start').click(() => {
             //let carArray = $('div.car').map( function() {return this} ).get();
-            var timer = setInterval( function() {
-                            arena.lanes.forEach(function (element, index) {
-                                element.run();
-                                $(`#${index}`).css('margin-left', arena.lanes[index].getCar().place);
-                                $(`#${index} svg path`).css('fill', arena.lanes[index].currentColor);
-                                //console.log(arena.lanes[index].getCar().place);
-                                //console.log((arena.width - 50));
-                                if (arena.lanes[index].getCar().place > (arena.width - 100)){
-                                    clearInterval(timer);
-                                }
-                            });
-                        }, 100);
-                    });
+             timer = setInterval( function() {
+                        arena.lanes.forEach(function (element, index) {
+                            element.run();
+                            $(`#${index}`).css('margin-left', arena.lanes[index].getCar().place);
+                            $(`#${index} svg path`).css('fill', arena.lanes[index].currentColor);
+                            //console.log(arena.lanes[index].getCar().place);
+                            //console.log((arena.width - 50));
+                            if (arena.lanes[index].getCar().place > (arena.width - 100)){
+                                clearInterval(timer);
+                            }
+                        });
+                    }, 100);
+                });
     }
 
 

@@ -8,7 +8,7 @@ class Car {
         this.acceleration = Math.floor(Math.random() * 4) + 1; // generate a number between 1-5;    
         this.color = COLOR[Object.keys(COLOR)[Math.floor(Math.random() * 7)]];
         this.pitStopTime = Math.floor(Math.random() * 9) + 1; // generate a number between 1-10;
-        this.pitStopDuration = Math.floor(Math.random() * 4) + 1; // generate a number between 1-5;
+        this.pitStopDuration = Math.floor(Math.random() * 9) + 1; // generate a number between 1-10;
         this.place = 0;
         this.currentSpeed = 0;
     }
