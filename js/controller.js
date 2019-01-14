@@ -77,14 +77,14 @@
 
     function setStartListener() {
         $('#start').click(() => {
-            //let carArray = $('div.car').map( function() {return this} ).get();
+            if (timer) {
+                clearInterval(timer);
+            }
              timer = setInterval( function() {
                         arena.lanes.forEach(function (element, index) {
                             element.run();
                             $(`#${index}`).css('margin-left', arena.lanes[index].getCar().place);
                             $(`#${index} svg path`).css('fill', arena.lanes[index].currentColor);
-                            //console.log(arena.lanes[index].getCar().place);
-                            //console.log((arena.width - 50));
                             if (arena.lanes[index].getCar().place > (arena.width - 100)){
                                 clearInterval(timer);
                             }
