@@ -13,7 +13,7 @@
     width="100px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
     <metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
     <g class = "car"><path fill ="`,
-    `color`,
+    `color`, // color of car will replace here
     ` 
     " d="M685,666.4c0,50.3,40.8,91.1,91.1,91.1s91.1-40.8,91.1-91.1c0-50.3-40.8-91.1-91.1-91.1C725.7,
     575.3,685,616.1,685,666.4z M714.7,666.4c0-33.9,27.5-61.3,61.3-61.3s61.3,27.5,61.3,61.3s-27.5,61.3-61.3,
@@ -32,11 +32,11 @@
     `];
     let laneDiv = [`    
     <div class="lane" id="`,
-        `lane-id`,
+        `lane-id`, // lane-id will replace here
         `"><div class="car" id="`,
-        `id`,
+        `car-id`, // car-id will replace here
         `">`,
-        `carSvg`,
+        `carSvg`, // car svg image will replace here
     `   </div>
     </div>
     `];
@@ -86,9 +86,9 @@
                             element.run();
                             $(`#${index}.car`).css('margin-left', arena.lanes[index].getCar().place);
                             $(`#${index} svg path`).css('fill', arena.lanes[index].currentColor);
-                            if (arena.lanes[index].getCar().place > (arena.width - 100)){
+                            if (arena.lanes[index].getCar().place > (arena.width - 100)){ // arena.width - ... to arrage finishing point lane regarding how much of the car body passes the point
                                 clearInterval(timer);
-                                $(`#${index}.lane`).css('background-color', '#a70e0e'); // first id and then name for using both, otherwise not working
+                                $(`#${index}.lane`).css('background-color', '#a70e0e'); // first id and then class for selecting DOM object, otherwise not working
                                 showWinnerDialog(index);
                             }
                         });
@@ -104,13 +104,13 @@
         <pre>Car Acceleration         : ${arena.lanes[index].getCar().acceleration} m/sn</pre>
         <pre>Car Current Speed     : ${arena.lanes[index].getCar().currentSpeed} km/h</pre>
         <pre>Car Pit-Stop Time       : ${arena.lanes[index].getCar().pitStopTime} ms</pre>
-        <pre>Car Pit-Stop Duration  : ${arena.lanes[index].getCar().pitStopDuration}ms</pre>
+        <pre>Car Pit-Stop Duration  : ${arena.lanes[index].getCar().pitStopDuration} ms</pre>
         <pre>Car Pit-Stop Count      : ${arena.lanes[index].pitStopCount} times</pre>
         `);
 
         $('#dialog').modal({
             fadeDuration: 1000,
-            fadeDelay: 0.50 // Will fade in 750ms after the overlay finishes.
+            fadeDelay: 0.50 // Will fade in 50ms after the overlay finishes.
           });
     }
 
