@@ -1,14 +1,16 @@
 
 
-
+/**
+ * Lane class contains Car class and order Car to move or to stop according the time of pitSoptTime and pitStopDuration
+ */
 
 class Lane {
     constructor (pCar) {
         this.car = pCar; // class Car();
         this.pitStopDuration = pCar.pitStopDuration;
         this.pitStopTime = pCar.pitStopTime;
-        //this.pitStopStatus = false;
         this.currentColor = pCar.color;
+        this.pitStopCount = 0;
     }
 
     getCar() {
@@ -23,6 +25,7 @@ class Lane {
                 this.pitStopTime = this.car.pitStopTime;
                 this.pitStopDuration = this.car.pitStopDuration;
                 this.currentColor = this.car.color;
+                this.pitStopCount++;
             }
             
         } else {

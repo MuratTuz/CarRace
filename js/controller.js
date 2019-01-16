@@ -31,8 +31,9 @@
     </svg>
     `];
     let laneDiv = [`    
-    <div class="lane">
-        <div class="car" id="`,
+    <div class="lane" id="`,
+        `lane-id`,
+        `"><div class="car" id="`,
         `id`,
         `">`,
         `carSvg`,
@@ -69,8 +70,8 @@
 
     function drawArena(index) {
         carSvg[1] = arena.getLane(index).getCar().color;
-        laneDiv[1] =index;
-        laneDiv[3] = carSvg.join('').toString();
+        laneDiv[1] = laneDiv[3] = index;
+        laneDiv[5] = carSvg.join('').toString();
 
         $('.arena').append(laneDiv.join('').toString());
     }
@@ -83,16 +84,35 @@
              timer = setInterval( function() {
                         arena.lanes.forEach(function (element, index) {
                             element.run();
-                            $(`#${index}`).css('margin-left', arena.lanes[index].getCar().place);
+                            $(`#${index}.car`).css('margin-left', arena.lanes[index].getCar().place);
                             $(`#${index} svg path`).css('fill', arena.lanes[index].currentColor);
                             if (arena.lanes[index].getCar().place > (arena.width - 100)){
                                 clearInterval(timer);
+                                $(`#${index}.lane`).css('background-color', '#a70e0e'); // first id and then name for using both, otherwise not working
+                                showWinnerDialog(index);
                             }
                         });
                     }, 100);
                 });
     }
 
+    function showWinnerDialog(index) {
+        $('.winner-image').html($(`#${index}.car`).html());
+        $('.winner-attribute').html(`<h4>Car Information</h4>
+        <pre>Car Power                  : ${arena.lanes[index].getCar().power} hp</pre>
+        <pre>Car Max Speed          : ${arena.lanes[index].getCar().maxSpeed} km/h</pre>
+        <pre>Car Acceleration         : ${arena.lanes[index].getCar().acceleration} m/sn</pre>
+        <pre>Car Current Speed     : ${arena.lanes[index].getCar().currentSpeed} km/h</pre>
+        <pre>Car Pit-Stop Time       : ${arena.lanes[index].getCar().pitStopTime} ms</pre>
+        <pre>Car Pit-Stop Duration  : ${arena.lanes[index].getCar().pitStopDuration}ms</pre>
+        <pre>Car Pit-Stop Count      : ${arena.lanes[index].pitStopCount} times</pre>
+        `);
+
+        $('#dialog').modal({
+            fadeDuration: 1000,
+            fadeDelay: 0.50 // Will fade in 750ms after the overlay finishes.
+          });
+    }
 
     init();
 

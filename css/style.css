@@ -49,6 +49,33 @@ button {
     width: 104px;
     padding: 1px;
 }
+
+#dialog {
+    display: none;
+}
+#dialog h2 {
+    text-align: center;
+}
+
+.dialog-modal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.dialog-modal h4 {
+    margin-top: 0px;
+    text-decoration: underline;
+}
+pre {
+    margin: 0px;
+    padding: 0px;
+    font: 12px arial, helvetica, sans-serif;
+}
+.winner-image {
+    display: flex;
+    align-items: center;
+}
+
 /*
 * {
     background: #000 !important;

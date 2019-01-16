@@ -1,5 +1,14 @@
 
 
+/**
+ * Car class holds and defines the data of acceleration, maxspeed (regarding power), pitStopTime, pitStopDuration and color.
+ * 
+ * Move Function makes the movement of in the UI using margin-left attribute. The function increase the place value of object 
+ * according currentSpeed value.
+ * 
+ * Accelerate Function increases the current speed value as much as more acceleration value and controls not to exceed maxSpeed. 
+ * 
+ */
 
 class Car {
     constructor() {
