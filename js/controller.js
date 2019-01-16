@@ -109,7 +109,7 @@
         `);
 
         $('#dialog').modal({
-            fadeDuration: 1000,
+            fadeDuration: 750,
             fadeDelay: 0.50 // Will fade in 50ms after the overlay finishes.
           });
     }
