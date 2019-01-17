@@ -99,13 +99,13 @@
     function showWinnerDialog(index) {
         $('.winner-image').html($(`#${index}.car`).html());
         $('.winner-attribute').html(`<h4>Car Information</h4>
-        <pre>Car Power                  : ${arena.lanes[index].getCar().power} hp</pre>
-        <pre>Car Max Speed          : ${arena.lanes[index].getCar().maxSpeed} km/h</pre>
-        <pre>Car Acceleration         : ${arena.lanes[index].getCar().acceleration} m/sn</pre>
-        <pre>Car Current Speed     : ${arena.lanes[index].getCar().currentSpeed} km/h</pre>
-        <pre>Car Pit-Stop Time       : ${arena.lanes[index].getCar().pitStopTime} ms</pre>
-        <pre>Car Pit-Stop Duration  : ${arena.lanes[index].getCar().pitStopDuration} ms</pre>
-        <pre>Car Pit-Stop Count      : ${arena.lanes[index].pitStopCount} times</pre>
+        <pre>Power                  : ${arena.lanes[index].getCar().power} hp</pre>
+        <pre>Max Speed          : ${arena.lanes[index].getCar().maxSpeed} km/h</pre>
+        <pre>Acceleration         : ${arena.lanes[index].getCar().acceleration} m/sn</pre>
+        <pre>Current Speed     : ${arena.lanes[index].getCar().currentSpeed} km/h</pre>
+        <pre>Pit-Stop Time       : ${arena.lanes[index].getCar().pitStopTime} ms</pre>
+        <pre>Pit-Stop Duration  : ${arena.lanes[index].getCar().pitStopDuration} ms</pre>
+        <pre>Pit-Stop Count      : ${arena.lanes[index].pitStopCount} times</pre>
         `);
 
         $('#dialog').modal({
