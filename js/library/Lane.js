@@ -20,11 +20,11 @@ class Lane {
     run() {
         if (--this.pitStopTime < 0) {
             this.car.stop();
-            this.currentColor = 'black';
+            this.currentColor = 'black'; // when car is at pit-stop so its color turns out black
             if (--this.pitStopDuration < 0) {
                 this.pitStopTime = this.car.pitStopTime;
                 this.pitStopDuration = this.car.pitStopDuration;
-                this.currentColor = this.car.color;
+                this.currentColor = this.car.color; // when car turns back to the race then it gets its original color again
                 this.pitStopCount++;
             }
             
