@@ -86,7 +86,7 @@
                             element.run();
                             $(`#${index}.car`).css('margin-left', arena.lanes[index].getCar().place);
                             $(`#${index} svg path`).css('fill', arena.lanes[index].currentColor);
-                            if (arena.lanes[index].getCar().place > (arena.width - 100)){ // arena.width - ... to arrage finishing point lane regarding how much of the car body passes the point
+                            if (arena.getLane(index).getCar().place > (arena.width - 100)){ // arena.width - ... to arrage finishing point lane regarding how much of the car body passes the point
                                 clearInterval(timer);
                                 $(`#${index}.lane`).css('background-color', '#a70e0e'); // first id and then class for selecting DOM object, otherwise not working
                                 showWinnerDialog(index);
