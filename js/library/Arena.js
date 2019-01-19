@@ -14,4 +14,12 @@ class Arena {
     getLane(index) {
         return this.lanes[index];
     }
+
+    addLane(lane) {
+        this.lanes.push(lane);
+    }
+
+    getWidth() {
+        return this.width;
+    }
 }

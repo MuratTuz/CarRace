@@ -53,14 +53,15 @@
             }
             $('.arena').html('');
             let laneCount = $('#carValue').val();
-            let maxWidth = parseInt($('.arena').css('width'), 10); 
+            let arenaWidth = parseInt($('.arena').css('width'), 10);
+            arenaWidth -= 100; 
             if (laneCount) {
-                arena = new Arena(maxWidth);
-                for (let index = 0; index < laneCount; index++) {
+                arena = new Arena(arenaWidth);
+                for (let laneNumber = 0; laneNumber < laneCount; laneNumber++) {
                     const car = new Car();
                     const lane = new Lane(car);
-                    arena.lanes.push(lane);
-                    drawArena(index);
+                    arena.addLane(lane);
+                    drawLane(laneNumber);
                 }
             } else {
                 alert('Please enter a valid number for car');
@@ -68,10 +69,10 @@
         });
     }
 
-    function drawArena(index) {
-        carSvg[1] = arena.getLane(index).getCar().color;
-        laneDiv[1] = 'lane' + index.toString();
-        laneDiv[3] = 'car' + index.toString();
+    function drawLane(laneNumber) {
+        carSvg[1] = arena.getLane(laneNumber).getCar().color;
+        laneDiv[1] = 'lane' + laneNumber.toString();
+        laneDiv[3] = 'car' + laneNumber.toString();
         laneDiv[5] = carSvg.join('').toString();
 
         $('.arena').append(laneDiv.join('').toString());
@@ -87,9 +88,9 @@
                             element.run();
                             $(`#car${index}`).css('margin-left', arena.getLane(index).getCar().place);
                             $(`#car${index} svg path`).css('fill', arena.getLane(index).currentColor);
-                            if (arena.getLane(index).getCar().place > (arena.width - 100)){ // arena.width - ... to arrage finishing point lane regarding how much of the car body passes the point
+                            if (arena.getLane(index).getCar().place > arena.getWidth()){ 
                                 clearInterval(timer);
-                                $(`#lane${index}`).css('background-color', '#a70e0e'); // first id and then class for selecting DOM object, otherwise not working
+                                $(`#lane${index}`).css('background-color', '#a70e0e'); 
                                 showWinnerDialog(index);
                             }
                         });
@@ -97,16 +98,16 @@
                 });
     }
 
-    function showWinnerDialog(index) {
-        $('.winner-image').html($(`#car${index}`).html());
+    function showWinnerDialog(winnerNumber) {
+        $('.winner-image').html($(`#car${winnerNumber}`).html());
         $('.winner-attribute').html(`<h4>Car Information</h4>
-        <pre>Power                  : ${arena.getLane(index).getCar().power} hp</pre>
-        <pre>Max Speed          : ${arena.getLane(index).getCar().maxSpeed} km/h</pre>
-        <pre>Acceleration         : ${arena.getLane(index).getCar().acceleration} m/sn</pre>
-        <pre>Current Speed     : ${arena.getLane(index).getCar().currentSpeed} km/h</pre>
-        <pre>Pit-Stop Time       : ${arena.getLane(index).getCar().pitStopTime} ms</pre>
-        <pre>Pit-Stop Duration  : ${arena.getLane(index).getCar().pitStopDuration} ms</pre>
-        <pre>Pit-Stop Count      : ${arena.getLane(index).pitStopCount} times</pre>
+        <pre>Power                  : ${arena.getLane(winnerNumber).getCar().power} hp</pre>
+        <pre>Max Speed          : ${arena.getLane(winnerNumber).getCar().maxSpeed} km/h</pre>
+        <pre>Acceleration         : ${arena.getLane(winnerNumber).getCar().acceleration} m/sn</pre>
+        <pre>Current Speed     : ${arena.getLane(winnerNumber).getCar().currentSpeed} km/h</pre>
+        <pre>Pit-Stop Time       : ${arena.getLane(winnerNumber).getCar().pitStopTime} ms</pre>
+        <pre>Pit-Stop Duration  : ${arena.getLane(winnerNumber).getCar().pitStopDuration} ms</pre>
+        <pre>Pit-Stop Count      : ${arena.getLane(winnerNumber).pitStopCount} times</pre>
         `);
 
         $('#dialog').modal({
