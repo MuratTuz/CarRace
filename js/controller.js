@@ -53,7 +53,7 @@
             }
             $('.arena').html('');
             let laneCount = $('#carValue').val();
-            let arenaWidth = parseInt($('.arena').css('width'), 10);
+            let arenaWidth = parseInt($('.arena').css('width'), 10); // gets current screen width
             arenaWidth -= 100; 
             if (laneCount) {
                 arena = new Arena(arenaWidth);
@@ -84,7 +84,7 @@
                 clearInterval(timer);
             }
              timer = setInterval( function() {
-                        arena.lanes.forEach(function (element, index) {
+                        arena.getAllLanes().forEach(function (element, index) {
                             element.run();
                             $(`#car${index}`).css('margin-left', arena.getLane(index).getCar().place);
                             $(`#car${index} svg path`).css('fill', arena.getLane(index).currentColor);

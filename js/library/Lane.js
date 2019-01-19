@@ -1,7 +1,7 @@
 
 
 /**
- * Lane class contains Car class and order Car to move or to stop according the time of pitSoptTime and pitStopDuration
+ * Lane class contains Car class and gives orders Car to move or to stop according the time of pitSoptTime and pitStopDuration
  */
 
 class Lane {
@@ -20,7 +20,7 @@ class Lane {
     run() {
         if (--this.pitStopTime < 0) {
             this.car.stop();
-            this.currentColor = 'black'; // when car is at pit-stop so its color turns out black
+            this.currentColor = 'black'; // when car is at pit-stop then its color turns out black
             if (--this.pitStopDuration < 0) {
                 this.pitStopTime = this.car.pitStopTime;
                 this.pitStopDuration = this.car.pitStopDuration;

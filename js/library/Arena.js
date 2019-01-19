@@ -12,9 +12,12 @@ class Arena {
     }
 
     getLane(index) {
-        return this.lanes[index];
+        return this.lanes[index];      
     }
 
+    getAllLanes() {
+        return this.lanes;
+    }
     addLane(lane) {
         this.lanes.push(lane);
     }
