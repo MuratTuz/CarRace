@@ -70,7 +70,8 @@
 
     function drawArena(index) {
         carSvg[1] = arena.getLane(index).getCar().color;
-        laneDiv[1] = laneDiv[3] = index;
+        laneDiv[1] = 'lane' + index.toString();
+        laneDiv[3] = 'car' + index.toString();
         laneDiv[5] = carSvg.join('').toString();
 
         $('.arena').append(laneDiv.join('').toString());
@@ -84,11 +85,11 @@
              timer = setInterval( function() {
                         arena.lanes.forEach(function (element, index) {
                             element.run();
-                            $(`#${index}.car`).css('margin-left', arena.lanes[index].getCar().place);
-                            $(`#${index} svg path`).css('fill', arena.lanes[index].currentColor);
+                            $(`#car${index}`).css('margin-left', arena.getLane(index).getCar().place);
+                            $(`#car${index} svg path`).css('fill', arena.getLane(index).currentColor);
                             if (arena.getLane(index).getCar().place > (arena.width - 100)){ // arena.width - ... to arrage finishing point lane regarding how much of the car body passes the point
                                 clearInterval(timer);
-                                $(`#${index}.lane`).css('background-color', '#a70e0e'); // first id and then class for selecting DOM object, otherwise not working
+                                $(`#lane${index}`).css('background-color', '#a70e0e'); // first id and then class for selecting DOM object, otherwise not working
                                 showWinnerDialog(index);
                             }
                         });
@@ -97,7 +98,7 @@
     }
 
     function showWinnerDialog(index) {
-        $('.winner-image').html($(`#${index}.car`).html());
+        $('.winner-image').html($(`#car${index}`).html());
         $('.winner-attribute').html(`<h4>Car Information</h4>
         <pre>Power                  : ${arena.getLane(index).getCar().power} hp</pre>
         <pre>Max Speed          : ${arena.getLane(index).getCar().maxSpeed} km/h</pre>

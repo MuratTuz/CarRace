@@ -26,7 +26,6 @@ class Car {
     move() {
         this.accelerate();
         this.place += this.currentSpeed;
-
     }
 
     stop() {
@@ -34,10 +33,11 @@ class Car {
     }
 
     accelerate() {
-        if (this.currentSpeed < this.maxSpeed) {
-            this.currentSpeed += this.acceleration;
+        const speed = this.currentSpeed + this.acceleration;
+        if (speed < this.maxSpeed) {
+            this.currentSpeed = speed;
         } else {
-            this.currentSpeed =this.maxSpeed // not to exceed maxSpeed before moving
+            this.currentSpeed = this.maxSpeed // not to exceed maxSpeed before moving
         }
     }
 
